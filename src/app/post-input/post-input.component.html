@@ -1,0 +1,52 @@
+<!-- <div class="container"> -->
+
+{{diagnostic}}
+<form #blogForm="ngForm" (ngSubmit)="submitPost()" class="post-form">
+
+  <!-- Author -->
+  <div class="form-group">
+    <label for="author">Author*</label>
+    <input type="text" class="form-control" id="author" required [(ngModel)]="post.author" name="author">
+  </div>
+
+  <!-- Title -->
+  <div class="form-group">
+    <label for="title">Title*</label>
+    <input type="text" class="form-control" id="title" required [(ngModel)]="post.title" name="title">
+  </div>
+
+  <!-- Image-->
+  <div class="form-group">
+      <label for="title">Image URL</label>
+      <input type="text" class="form-control" id="imageURL"   required [(ngModel)]="post.imageURL" name="imageURL">
+    </div>
+    <img src="{{post.imageURL}}" alt="" class="input-half-width">
+
+    
+    
+  <!-- Status -->
+  <div class="form-group">
+    <label for="status">Status</label>
+    <select class="form-control" id="status" [(ngModel)]="post.status" name="status">
+      <option value="1" selected>Active</option>
+      <option value="2">Inactive</option>
+    </select>
+  </div>
+
+
+  <!-- <div class="form-group">
+    <label for="content">Text</label>
+    <input type="text" class="form-control" id="content" required [(ngModel)]="post.content" name="content" (keyup.enter)="submitPost(); blogForm.reset(); ">
+  </div> -->
+
+  <!-- Content -->
+  <p-editor [(ngModel)]="post.content" name="content" required [style]="{'height':'320px'}"></p-editor>
+  
+  <!-- Buttons -->
+  <button type="button" class="btn btn-success" [disabled]="!blogForm.form.valid" (click)="submitPost(); resetPost();">Submit</button>
+  <!-- <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button> -->
+  <button type="button" class="btn btn-default" (click)="resetPost()"> Reset</button>
+
+</form>
+
+<!-- </div> -->

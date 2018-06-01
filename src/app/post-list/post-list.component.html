@@ -1,0 +1,50 @@
+<!-- <app-post-input (postAdded)="addPost($event)"> </app-post-input> -->
+<h3> Posts </h3>
+
+
+<div class="row">
+    <div class="col">
+        <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter posts</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <div class="btn-group dropright">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        By date
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" value="asc" (click)="onDateSort($event)">Ascending</button>
+                        <button class="dropdown-item" value="desc" (click)="onDateSort($event)">Descending</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-primary mb-3" style="width: 18rem;" *ngFor="let post of posts">
+    <div class="card-header ">
+        <i *ngIf="post.status == 1" class="fas fa-check-circle" style="color: green" title = "Active" ></i>
+        <i *ngIf="post.status == 2" class="fas fa-times-circle" style="color:red" title="Inactive"></i>   
+       <span (click) = "editPost(post)"><i class="fas fa-edit" title="Click to edit this product"></i></span>        
+        <span (click) = "removePost(post)"><i class="fas fa-trash-alt" title="Delete"></i></span>
+        <h5 class="card-title text-primary">{{post.title}}</h5>By {{post.author}}
+    </div>
+    <div class="card-body text-primary">
+
+        <div *ngIf="post.imageURL">
+            <img class="card-img-top" src="{{post.imageURL}}">
+        </div>
+        
+        <p class="card-text"[innerHTML]="post.content"></p>
+        <p class="card-text">
+            <small class="text-muted">{{post.publicationDate | date}}</small>
+        </p>
+    </div>
+</div>
+
+
+<p-dialog header="Edit" [(visible)]="editDialogVisibility" (onHide)="editCanceled()" [modal]="true" [responsive]="true" [width]="700" [minWidth]="700" [minY]="500">
+        <app-post-input [post]= "editedCopy" [isNewPost] = false (postAdded)="editSubmitted($event)"></app-post-input>
+    </p-dialog>
+
+<!-- <rl-tag-input [(ngModel)]="tags" placeholder="Testing placeholder"></rl-tag-input> -->
