@@ -1,6 +1,6 @@
 export class Post {
     constructor(
-        //public id: number,
+        public id: string,
         public publicationDate : Date,
         public author: string,
         public title: string,

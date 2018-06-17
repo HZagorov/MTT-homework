@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/components/button/button';
+import { HttpClientModule } from '@angular/common/http';
 
 import { PostInputComponent } from './post-input/post-input.component';
 import { AppComponent } from './app.component';
@@ -29,10 +30,8 @@ import { AppRoutingModule } from './/app-routing.module';
     ReactiveFormsModule,
     AppRoutingModule,
     DialogModule,
-    ButtonModule
-   
-   
-  
+    ButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 
-@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'); 
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css');  
 @import './assets/css/main.css';
 @import './assets/forms.css';
 @import url('https://use.fontawesome.com/releases/v5.0.13/css/all.css');

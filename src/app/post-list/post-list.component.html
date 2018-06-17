@@ -21,12 +21,14 @@
     </div>
 </div>
 
+
+
 <div class="card border-primary mb-3" style="width: 18rem;" *ngFor="let post of posts">
     <div class="card-header ">
         <i *ngIf="post.status == 1" class="fas fa-check-circle" style="color: green" title = "Active" ></i>
         <i *ngIf="post.status == 2" class="fas fa-times-circle" style="color:red" title="Inactive"></i>   
        <span (click) = "editPost(post)"><i class="fas fa-edit" title="Click to edit this product"></i></span>        
-        <span (click) = "removePost(post)"><i class="fas fa-trash-alt" title="Delete"></i></span>
+        <span (click) = "removePost(post.id)"><i class="fas fa-trash-alt" title="Delete"></i></span>
         <h5 class="card-title text-primary">{{post.title}}</h5>By {{post.author}}
     </div>
     <div class="card-body text-primary">
@@ -44,7 +46,6 @@
 
 
 <p-dialog header="Edit" [(visible)]="editDialogVisibility" (onHide)="editCanceled()" [modal]="true" [responsive]="true" [width]="700" [minWidth]="700" [minY]="500">
-        <app-post-input [post]= "editedCopy" [isNewPost] = false (postAdded)="editSubmitted($event)"></app-post-input>
+        <app-post-input [post]= "editedCopy" [isNewPost] = false (postEdited)="editSubmitted($event)"></app-post-input>
     </p-dialog>
 
-<!-- <rl-tag-input [(ngModel)]="tags" placeholder="Testing placeholder"></rl-tag-input> -->
